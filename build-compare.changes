@@ -1,0 +1,69 @@
+* Fri Sep 30 2011 Carsten Munk <carsten@maemo.org> - 2009.10.14
+- Drop OBS worker hostname changes patch
+
+* Fri Aug 26 2011 Carsten Munk <carsten@maemo.org> - 2009.10.14
+- Towards similar builds of glibc in OBS, ignore 
+  /usr/lib/locale/locale-archive.tmpl - we're going to see the
+  difference of locales in source changes anyway and this archive
+  always changes.
+
+* Sat Aug 20 2011 Carsten Munk <carsten@maemo.org> - 2009.10.14
+- Ignore OBS worker hostname changes. 
+
+* Mon Jan 10 2011 Anas Nashif <anas.nashif@intel.com> - 2009.10.14
+- Update script from upstream with more checks
+
+* Thu Mar 25 2010 Anas Nashif <anas.nashif@intel.com> - 2009.10.14
+- Update script from upstream with more checks
+
+* Mon Jan 11 2010 nashif <anas.nashif@intel.com> - 2009.10.14
+- Dont diff against disturl
+
+* Wed Nov 18 2009 Anas Nashif <anas.nashif@intel.com> - 2009.10.14
+- Update to 2009.10.14
+
+* Thu Sep 24 2009 Anas Nashif <anas.nashif@intel.com> - 2009.08.20
+- Update to 2009.08.20
+
+* Mon Aug 10 2009 Anas Nashif <anas.nashif@intel.com> - 2009.08.06
+- Update to 2009.08.06 snapshot
+
+* Sun Jul 26 2009 Anas Nashif <anas.nashif@intel.com> - 2009.07.23
+- Sync with upstream which has lots of enhancements
+
+* Thu Jul 09 2009 Anas Nashif <anas.nashif@intel.com> - 2009.01.27
+- More files to exclude
+
+* Wed Jul 08 2009 Anas Nashif <anas.nashif@intel.com> - 2009.01.27
+- Ignore comments when comparing files
+
+* Tue Jul 07 2009 Anas Nashif <anas.nashif@intel.com> - 2009.01.27
+- Also ignore date changes in info files
+
+* Tue Jul 07 2009 Anas Nashif <anas.nashif@intel.com> - 2009.01.27
+- Ignore changes in docs and manpages only
+
+* Fri Feb 27 2009 Anas Nashif <anas.nashif@intel.com> 2009.01.27
+- Initial import into Moblin
+
+* Sun Feb  8 2009 coolo@suse.de
+- fix handling of hardlinks to compressed files
+* Sat Feb  7 2009 coolo@suse.de
+- fix handling of -32bit and -64bit
+* Sat Feb  7 2009 coolo@suse.de
+- fix command line order
+* Fri Feb  6 2009 coolo@suse.de
+- use --no-show-raw-insn for objdump -d
+* Fri Feb  6 2009 coolo@suse.de
+- hopefully fixed shell quoting for rpm command line
+* Thu Feb  5 2009 coolo@suse.de
+- fix 2 bugs
+- don't ignore source rpms - changed sources should output
+  changed source rpms, no matter if they create the same binaries
+  (think of changed copyright header in spec files)
+* Tue Jan 27 2009 adrian@suse.de
+- Create initial package based on the work of Matz and Coolo
+  This package provides script for the main build script to be able
+  to check if a new build has the same result than the former one.
+  The Build Service is able to skip the new build than.
+- changes in source rpms are currently ignored, is that okay ?
