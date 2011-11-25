@@ -148,6 +148,10 @@ check_single_file()
        echo "$file skipped, what matters is source files when it comes to locales."
        return 0
        ;;
+    /lib/libsoftokn3.chk|/lib/libfreebl3.chk)
+       echo "$file skipped, just signatures"
+       return 0
+       ;;
     *.exe.mdb|*.dll.mdb)
        # Just debug information, we can skip them
        echo "$file skipped as debug file."
