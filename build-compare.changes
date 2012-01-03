@@ -1,3 +1,6 @@
+* Tue Jan 03 2012 Carsten Munk <carsten@maemo.org> - 2009.10.14
+- Utilize that prjlinks are transparent to lower load on QA checks
+
 * Fri Nov 25 2011 Carsten Munk <carsten@maemo.org> - 2009.10.14
 - Don't bother with nss's /lib/*.chk files, they're just signatures.
   We'd see difference in binaries instead.

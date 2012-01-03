@@ -56,7 +56,7 @@ function cmp_spec ()
     # don't look at RELEASE, it contains our build number
     QF="$QF %{VERSION} %{EPOCH}\\n"
     QF="$QF %{SUMMARY}\\n%{DESCRIPTION}\\n"
-    QF="$QF %{VENDOR} %{DISTRIBUTION} %{DISTURL}"
+    QF="$QF %{VENDOR}\\n%{DISTURL}\\n"
     QF="$QF %{LICENSE} %{LICENSE}\\n"
     QF="$QF %{GROUP} %{URL} %{EXCLUDEARCH} %{EXCLUDEOS} %{EXCLUSIVEARCH}\\n"
     QF="$QF %{EXCLUSIVEOS} %{RPMVERSION} %{PLATFORM}\\n"
@@ -77,8 +77,8 @@ function cmp_spec ()
     file1=`mktemp`
     file2=`mktemp`
     
-    check_header $oldrpm > $file1
-    check_header $newrpm > $file2
+    check_header $oldrpm | sed "s|obs://\(.*\)/\(.*\)/\(.*\)/\(.*\)|obs://\1/\4|g" > $file1
+    check_header $newrpm | sed "s|obs://\(.*\)/\(.*\)/\(.*\)/\(.*\)|obs://\1/\4|g" > $file2
     
     # the DISTURL tag can be used as checkin ID
     #echo "$QF"
