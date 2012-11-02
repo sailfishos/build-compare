@@ -1,3 +1,6 @@
+* Fri Nov 02 2012 Carsten Munk <carsten.munk@jollamobile> - 2009.10.14
+- Use NSS's new location of chk files.
+
 * Tue Jan 03 2012 Carsten Munk <carsten@maemo.org> - 2009.10.14
 - Utilize that prjlinks are transparent to lower load on QA checks
 

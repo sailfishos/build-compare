@@ -148,7 +148,7 @@ check_single_file()
        echo "$file skipped, what matters is source files when it comes to locales."
        return 0
        ;;
-    /lib/libsoftokn3.chk|/lib/libfreebl3.chk)
+    /lib/libsoftokn3.chk|/lib/libfreebl3.chk|/usr/lib/libsoftokn3.chk|/usr/lib/libfreebl3.chk)
        echo "$file skipped, just signatures"
        return 0
        ;;
