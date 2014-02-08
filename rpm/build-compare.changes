@@ -1,0 +1,58 @@
+* Sat Feb 08 2014 Islam Amer <islam.amer@jollamobile.com> - 2009.10.14
+- Ignore "dontuse" rpms when doing build comparison
+
+* Fri Nov 02 2012 Carsten Munk <carsten.munk@jollamobile> - 2009.10.14
+- Use NSS's new location of chk files.
+
+* Tue Jan 03 2012 Carsten Munk <carsten@maemo.org> - 2009.10.14
+- Utilize that prjlinks are transparent to lower load on QA checks
+
+* Fri Nov 25 2011 Carsten Munk <carsten@maemo.org> - 2009.10.14
+- Don't bother with nss's /lib/*.chk files, they're just signatures.
+  We'd see difference in binaries instead.
+
+* Fri Sep 30 2011 Carsten Munk <carsten@maemo.org> - 2009.10.14
+- Drop OBS worker hostname changes patch
+
+* Fri Aug 26 2011 Carsten Munk <carsten@maemo.org> - 2009.10.14
+- Towards similar builds of glibc in OBS, ignore 
+  /usr/lib/locale/locale-archive.tmpl - we're going to see the
+  difference of locales in source changes anyway and this archive
+  always changes.
+
+* Sat Aug 20 2011 Carsten Munk <carsten@maemo.org> - 2009.10.14
+- Ignore OBS worker hostname changes. 
+
+* Mon Jan 10 2011 Anas Nashif <anas.nashif@intel.com> - 2009.10.14
+- Update script from upstream with more checks
+
+* Thu Mar 25 2010 Anas Nashif <anas.nashif@intel.com> - 2009.10.14
+- Update script from upstream with more checks
+
+* Mon Jan 11 2010 nashif <anas.nashif@intel.com> - 2009.10.14
+- Dont diff against disturl
+
+* Wed Nov 18 2009 Anas Nashif <anas.nashif@intel.com> - 2009.10.14
+- Update to 2009.10.14
+
+* Thu Sep 24 2009 Anas Nashif <anas.nashif@intel.com> - 2009.08.20
+- Update to 2009.08.20
+
+* Mon Aug 10 2009 Anas Nashif <anas.nashif@intel.com> - 2009.08.06
+- Update to 2009.08.06 snapshot
+
+* Sun Jul 26 2009 Anas Nashif <anas.nashif@intel.com> - 2009.07.23
+- Sync with upstream which has lots of enhancements
+
+* Thu Jul 09 2009 Anas Nashif <anas.nashif@intel.com> - 2009.01.27
+- More files to exclude
+
+* Wed Jul 08 2009 Anas Nashif <anas.nashif@intel.com> - 2009.01.27
+- Ignore comments when comparing files
+
+* Tue Jul 07 2009 Anas Nashif <anas.nashif@intel.com> - 2009.01.27
+- Also ignore date changes in info files
+
+* Tue Jul 07 2009 Anas Nashif <anas.nashif@intel.com> - 2009.01.27
+- Ignore changes in docs and manpages only
+
