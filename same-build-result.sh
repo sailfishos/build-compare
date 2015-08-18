@@ -61,8 +61,10 @@ bash $SCMPSCRIPT "$osrpm" "$nsrpm" || exit 1
 # problem: a package can contain both noarch and arch subpackages, so we have to 
 # take care of proper sorting of NEWRPMS, e.g. noarch/x.rpm and x86_64/w.rpm since OLDRPMS 
 # has all the packages in a single directory and would sort this as w.rpm, x.rpm.
+# the ridiculous sedding in the NEWRPMS pipe is to put the filename before the path,
+# then sort on it, then remove it again.
 OLDRPMS=($(find "$OLDDIR" -name \*rpm -a ! -name \*src.rpm  -a ! -name \*.delta.rpm -a ! -name \*.dontuse.rpm|sort|grep -v -- -32bit-|grep -v -- -64bit-|grep -v -- '-x86-.*\.ia64\.rpm'))
-NEWRPMS=($(find $NEWDIRS -name \*rpm -a ! -name \*src.rpm -a ! -name \*.delta.rpm -a ! -name \*.dontuse.rpm|sort --field-separator=/ --key=7|grep -v -- -32bit-|grep -v -- -64bit-|grep -v -- '-x86-.*\.ia64\.rpm'))
+NEWRPMS=($(find $NEWDIRS -name \*rpm -a ! -name \*src.rpm -a ! -name \*.delta.rpm -a ! -name \*.dontuse.rpm|sed -e 's!.*/\([^/]*\)$!\1/&!'|sort|sed -e 's![^/]*/!!'|grep -v -- -32bit-|grep -v -- -64bit-|grep -v -- '-x86-.*\.ia64\.rpm'))
 
 SUCCESS=1
 rpmqp='rpm -qp --qf %{NAME} --nodigest --nosignature '
