@@ -387,6 +387,13 @@ check_single_file()
           sed -i -e 's%<td>[A-Z][a-z][a-z] [A-Z][a-z][a-z] [0-9]\+ [0-9]\+:[0-9]\+:[0-9]\+ +0000 201[0-9]</td>%<td>Mon Sep 20 19:02:43 +0000 2010</td>%g' $f
        done
        ;;
+    *adaptor.h)
+       # qdbusxml2cpp generates timestamps in the include guards
+       # #ifndef SOMETHINGADAPTOR_H_1442211518
+       # #define SOMETHINGADAPTOR_H_1442211518
+       for f in old/$file new/$file; do
+          sed -i -r -e 's/(#(ifndef|define) [A-Z]+ADAPTOR_H)_[0-9]+|/\1/' $f
+       done
   esac
 
   ftype=`/usr/bin/file old/$file | cut -d: -f2-`
