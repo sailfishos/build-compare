@@ -365,6 +365,13 @@ check_single_file()
 	  sed -i -e 's|built by abuild@[a-z0-9]* on ... ... [0-9]* [0-9]*:[0-9][0-9]:[0-9][0-9] .* 20[0-9][0-9]|built by abuild@build42 on Thu May 6 11:21:17 UTC 2010|' $f
        done
        ;;
+     /usr/bin/icu-config)
+       # from icu52-devel
+       for f in old/$file new/$file; do
+	  # # Rebuilt on Mon Sep 14 22:40:29 UTC 2015
+	  sed -i -e 's/^# Rebuilt on .*/# Automatically generated/' $f
+       done
+       ;;
      /usr/share/doc/kde/HTML/*/*/index.cache|/usr/share/doc/kde/HTML/*/*/*/index.cache)
        # various kde packages
        for f in old/$file new/$file; do
