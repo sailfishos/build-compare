@@ -45,7 +45,8 @@ fi
 QF_TAGS="%{NAME} %{VERSION} %{EPOCH}\\n"
 QF_TAGS="${QF_TAGS}%{SUMMARY}\\n%{DESCRIPTION}\\n"
 # the DISTURL tag can be used as checkin ID
-QF_TAGS="${QF_TAGS}%{VENDOR} %{DISTRIBUTION} %{DISTURL}\\n"
+# These cause problems in copied projects - Johannes
+#QF_TAGS="${QF_TAGS}%{VENDOR} %{DISTRIBUTION} %{DISTURL}\\n"
 QF_TAGS="${QF_TAGS}%{LICENSE}\\n"
 QF_TAGS="${QF_TAGS}%{GROUP} %{URL} %{EXCLUDEARCH} %{EXCLUDEOS} %{EXCLUSIVEARCH}\\n"
 QF_TAGS="${QF_TAGS}%{EXCLUSIVEOS} %{RPMVERSION} %{PLATFORM}\\n"
