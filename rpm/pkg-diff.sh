@@ -285,8 +285,8 @@ diff_two_files()
 
   offset=`sed 's@^.*differ: byte @@;s@,.*@@' < $dfile`
   echo "$file differs at offset '$offset' ($ftype)"
-  po=`mktemp --dry-run $TMPDIR/old.XXX`
-  pn=`mktemp --dry-run $TMPDIR/new.XXX`
+  po=`mktemp -u $TMPDIR/old.XXX`
+  pn=`mktemp -u $TMPDIR/new.XXX`
   mkfifo -m 0600 $po
   mkfifo -m 0600 $pn
   offset=$(( ($offset >> 6) << 6 ))

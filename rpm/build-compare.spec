@@ -23,6 +23,7 @@ Group:          Development/Tools/Building
 Url:            https://github.com/openSUSE/build-compare
 Version:        2015.07.15
 Release:        0
+Source0:        %{name}-%{version}.tar.gz
 Source1:        COPYING
 Source2:        same-build-result.sh
 Source3:        pkg-diff.sh
