@@ -20,8 +20,7 @@ Url:            https://github.com/sailfishos/build-compare
 Version:        0
 Release:        1
 Source0:        %{name}-%{version}.tar.gz
-Patch0:         0001-Our-mktemp-does-not-support-dry-run-option.patch
-Patch1:         0002-OBS-project-name-in-RPM-meta-data-causes-problems-in.patch
+Patch0:         0001-OBS-project-name-in-RPM-meta-data-causes-problems-in.patch
 %if 0%{?suse_version}
 Requires:       bash
 Requires:       cpio
