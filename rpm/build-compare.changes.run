@@ -1,0 +1,5 @@
+#!/usr/bin/git-change-log --script
+
+git-change-log --since rpm/build-compare.changes
+echo
+git-show :rpm/build-compare.changes
