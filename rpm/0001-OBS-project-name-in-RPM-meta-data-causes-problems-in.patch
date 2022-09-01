@@ -1,0 +1,27 @@
+From 8a6e5fb70a3afe73a9bb922da371c3ac7b8f36cf Mon Sep 17 00:00:00 2001
+From: Johannes Lahti <johannes.lahti@jollamobile.com>
+Date: Fri, 22 Mar 2019 17:23:33 +0200
+Subject: [PATCH] OBS project name in RPM meta data causes problems in copied
+ projects
+
+---
+ functions.sh | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/functions.sh b/functions.sh
+index f971d86..b1945d6 100755
+--- a/functions.sh
++++ b/functions.sh
+@@ -68,7 +68,8 @@ done
+ QF_TAGS="%{NAME} %{VERSION} %{EPOCH}\\n"
+ QF_TAGS="${QF_TAGS}%{SUMMARY}\\n%{DESCRIPTION}\\n"
+ # the DISTURL tag can be used as checkin ID
+-QF_TAGS="${QF_TAGS}%{VENDOR} %{DISTRIBUTION} %{DISTURL}\\n"
++# These cause problems in copied projects - Johannes
++#QF_TAGS="${QF_TAGS}%{VENDOR} %{DISTRIBUTION} %{DISTURL}\\n"
+ QF_TAGS="${QF_TAGS}%{LICENSE}\\n"
+ QF_TAGS="${QF_TAGS}%{GROUP} %{URL} %{EXCLUDEARCH} %{EXCLUDEOS} %{EXCLUSIVEARCH}\\n"
+ QF_TAGS="${QF_TAGS}%{EXCLUSIVEOS} %{RPMVERSION} %{PLATFORM}\\n"
+-- 
+2.26.2
+

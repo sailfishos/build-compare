@@ -1,6 +1,7 @@
 #
 # spec file for package build-compare
 #
+# Copyright (c) 2022 Jolla Ltd.
 # Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,23 +13,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
-#
-
-
 Name:           build-compare
 Summary:        Build Result Compare Script
-License:        GPL-2.0+
-Group:          Development/Tools/Building
-Url:            https://github.com/openSUSE/build-compare
-Version:        2015.07.15
-Release:        0
+License:        GPLv2+
+Url:            https://github.com/sailfishos/build-compare
+Version:        0
+Release:        1
 Source0:        %{name}-%{version}.tar.gz
-Source1:        COPYING
-Source2:        same-build-result.sh
-Source3:        pkg-diff.sh
-Source4:        functions.sh
-Source5:        srpm-check.sh
+Patch0:         0001-OBS-project-name-in-RPM-meta-data-causes-problems-in.patch
 %if 0%{?suse_version}
 Requires:       bash
 Requires:       cpio
@@ -50,18 +42,15 @@ to a former build.
 
 
 %prep
-%setup -q -c -T
+%autosetup -p1 -n %{name}-%{version}/%{name}
 
 %build
 
 %install
 mkdir -p $RPM_BUILD_ROOT/usr/lib/build/ $RPM_BUILD_ROOT/%_defaultdocdir/%name
-install -m 0755 %SOURCE2 %SOURCE3 %SOURCE4 %SOURCE5 $RPM_BUILD_ROOT/usr/lib/build/
-install -m 0644 %SOURCE1 $RPM_BUILD_ROOT/%_defaultdocdir/%name/
+install -m 0755 *.sh $RPM_BUILD_ROOT/usr/lib/build/
 
 %files
 %defattr(-,root,root)
-%doc %_defaultdocdir/%name
+%license COPYING
 /usr/lib/build
-
-%changelog
