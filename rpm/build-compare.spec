@@ -21,6 +21,7 @@ Version:        0
 Release:        1
 Source0:        %{name}-%{version}.tar.gz
 Patch0:         0001-OBS-project-name-in-RPM-meta-data-causes-problems-in.patch
+Patch1:         0002-fix-compatibility-with-older-sed.patch
 %if 0%{?suse_version}
 Requires:       bash
 Requires:       cpio
