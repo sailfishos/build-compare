@@ -1,0 +1,37 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Martin Kampas <martin.kampas@jolla.com>
+Date: Tue, 13 Sep 2022 12:37:49 +0200
+Subject: [PATCH] ignore parts of NSS checksum files
+
+These files contains checksums of the accompanied libraries. The
+checksums are signed using a temporary key pair generated at build time,
+so the signature always differs. Compare just the file header consisting
+of a little bit of metadata. See
+---
+ pkg-diff.sh | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/pkg-diff.sh b/pkg-diff.sh
+index 96dd46d50be2a18327e7905c584e87473098180f..fe94ca62802409bd983c535c06d740d5782fdcf8 100755
+--- a/pkg-diff.sh
++++ b/pkg-diff.sh
+@@ -617,6 +617,19 @@ normalize_file()
+       sed -i 's/^127.0.0.1[[:blank:]].*/127.0.0.1 hst/' "old/$file"
+       sed -i 's/^127.0.0.1[[:blank:]].*/127.0.0.1 hst/' "new/$file"
+       ;;
++    /usr/lib*/libfreebl3.chk|\
++    /usr/lib*/libfreeblpriv3.chk|\
++    /usr/lib*/libnssdbm3.chk|\
++    /usr/lib*/libsoftokn3.chk)
++      # These contains checksums of the accompanied libraries. The checksums
++      # are signed using a temporary key pair generated at build time, so the
++      # signature always differs. Compare just the file header consisting of a
++      # little bit of metadata. See
++      # https://github.com/sailfishos-mirror/nss/blob/f96bcd8755b60ad2ec01545f3481a56cf0f78408/cmd/shlibsign/shlibsign.c#L1228.
++      data_start=$(od --endian=big --skip-bytes 4 --read-bytes 4 --format d4 \
++        --address-radix=n "old/$file" |tr -d ' ')
++      truncate --size="$data_start" "old/$file" "new/$file"
++      ;;
+   esac
+ }
+ 
