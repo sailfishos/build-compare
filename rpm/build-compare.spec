@@ -22,7 +22,7 @@ Release:        1
 Source0:        %{name}-%{version}.tar.gz
 Patch0:         0001-OBS-project-name-in-RPM-meta-data-causes-problems-in.patch
 Patch1:         0002-fix-compatibility-with-older-sed.patch
-Patch1:         0003-ignore-parts-of-NSS-checksum-files.patch
+Patch2:         0003-ignore-parts-of-NSS-checksum-files.patch
 %if 0%{?suse_version}
 Requires:       bash
 Requires:       cpio
