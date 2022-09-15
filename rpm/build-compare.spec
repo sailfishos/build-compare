@@ -33,7 +33,6 @@ Requires:       gawk
 Requires:       grep
 Requires:       rpm
 Requires:       sed
-Requires:       od
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
