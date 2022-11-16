@@ -1,0 +1,31 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Martin Kampas <martin.kampas@jolla.com>
+Date: Wed, 16 Nov 2022 11:16:05 +0100
+Subject: [PATCH] ignore OS version recorded in Perl config
+
+---
+ pkg-diff.sh | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/pkg-diff.sh b/pkg-diff.sh
+index fe94ca62802409bd983c535c06d740d5782fdcf8..7e41cc3c4a7b03e89b1aad61c36198612573d85a 100755
+--- a/pkg-diff.sh
++++ b/pkg-diff.sh
+@@ -542,6 +542,17 @@ normalize_file()
+         [[ $nofilter ]] || sort -o $f $f
+       done
+       ;;
++    /usr/lib*/perl5/Config.pm|\
++    /usr/lib*/perl5/Config_heavy.pl)
++      for f in old/$file new/$file; do
++        sed -i -e '/^\s*osvers\s*=/d' $f
++      done
++      ;;
++    /usr/lib*/perl5/Errno.pm)
++      for f in old/$file new/$file; do
++        sed -i -e '/"$Config{'\''archname'\''}-$Config{'\''osvers'\''}" eq/,/die "Errno architecture (.*) does not match executable architecture (.*)"/d' $f
++      done
++      ;;
+     /var/adm/perl-modules/*)
+       for f in old/$file new/$file; do
+         sed -i -e 's|^=head2 ... ... .. ..:..:.. ....: C<Module>|=head2 Wed Jul  1 00:00:00 2009: C<Module>|' $f
