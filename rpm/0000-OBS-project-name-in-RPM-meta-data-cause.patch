@@ -1,4 +1,4 @@
-From 8a6e5fb70a3afe73a9bb922da371c3ac7b8f36cf Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Johannes Lahti <johannes.lahti@jollamobile.com>
 Date: Fri, 22 Mar 2019 17:23:33 +0200
 Subject: [PATCH] OBS project name in RPM meta data causes problems in copied
@@ -9,7 +9,7 @@ Subject: [PATCH] OBS project name in RPM meta data causes problems in copied
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/functions.sh b/functions.sh
-index f971d86..b1945d6 100755
+index e5af36bc77a57f6c8018eab9ba3b1f91c9e03a7d..d3719cbb70b7af63d7976478c3009a9e11dd1ea4 100755
 --- a/functions.sh
 +++ b/functions.sh
 @@ -68,7 +68,8 @@ done
@@ -22,6 +22,3 @@ index f971d86..b1945d6 100755
  QF_TAGS="${QF_TAGS}%{LICENSE}\\n"
  QF_TAGS="${QF_TAGS}%{GROUP} %{URL} %{EXCLUDEARCH} %{EXCLUDEOS} %{EXCLUSIVEARCH}\\n"
  QF_TAGS="${QF_TAGS}%{EXCLUSIVEOS} %{RPMVERSION} %{PLATFORM}\\n"
--- 
-2.26.2
-
