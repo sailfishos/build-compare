@@ -2,7 +2,7 @@
 # spec file for package build-compare
 #
 # Copyright (c) 2022 Jolla Ltd.
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,19 +14,22 @@
 # published by the Open Source Initiative.
 
 Name:           build-compare
+Version:        0
+Release:        1
 Summary:        Build Result Compare Script
 License:        GPLv2+
 Url:            https://github.com/sailfishos/build-compare
-Version:        0
-Release:        1
 Source0:        %{name}-%{version}.tar.gz
-Patch0:         0001-OBS-project-name-in-RPM-meta-data-causes-problems-in.patch
-Patch1:         0002-fix-compatibility-with-older-sed.patch
-Patch2:         0003-ignore-parts-of-NSS-checksum-files.patch
+Patch0:         0000-OBS-project-name-in-RPM-meta-data-cause.patch
+Patch1:         0001-ignore-parts-of-NSS-checksum-files.patch
+Patch2:         0002-ignore-OS-version-recorded-in-Perl-config.patch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+#!BuildIgnore:  build-compare
+BuildArch:      noarch
 %if 0%{?suse_version}
 Requires:       bash
-Requires:       cpio
 Requires:       coreutils
+Requires:       cpio
 Requires:       diffutils
 Requires:       file
 Requires:       gawk
@@ -34,14 +37,10 @@ Requires:       grep
 Requires:       rpm
 Requires:       sed
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
-#!BuildIgnore:  build-compare
 
 %description
 This package contains scripts to find out if the build result differs
 to a former build.
-
 
 %prep
 %autosetup -p1 -n %{name}-%{version}/%{name}
@@ -49,10 +48,14 @@ to a former build.
 %build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/usr/lib/build/ $RPM_BUILD_ROOT/%_defaultdocdir/%name
-install -m 0755 *.sh $RPM_BUILD_ROOT/usr/lib/build/
+mkdir -p %{buildroot}%{_prefix}/lib/build/
+install -m 0755 *.sh %{buildroot}%{_prefix}/lib/build/
 
 %files
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
 %defattr(-,root,root)
+%doc COPYING
+%else
 %license COPYING
-/usr/lib/build
+%endif
+%{_prefix}/lib/build
