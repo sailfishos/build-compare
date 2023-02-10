@@ -23,6 +23,7 @@ Source0:        %{name}-%{version}.tar.gz
 Patch0:         0000-OBS-project-name-in-RPM-meta-data-cause.patch
 Patch1:         0001-ignore-parts-of-NSS-checksum-files.patch
 Patch2:         0002-ignore-OS-version-recorded-in-Perl-conf.patch
+Patch3:         0003-Ignore-rpmlint-output-differences.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #!BuildIgnore:  build-compare
 BuildArch:      noarch

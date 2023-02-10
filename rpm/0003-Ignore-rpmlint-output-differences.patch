@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Matti=20Lehtim=C3=A4ki?= <matti.lehtimaki@jolla.com>
+Date: Fri, 10 Feb 2023 17:55:14 +0200
+Subject: [PATCH] Ignore rpmlint output differences
+
+Can cause unnecessary rebuilds.
+---
+ same-build-result.sh | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/same-build-result.sh b/same-build-result.sh
+index 5549207..1d2e270 100644
+--- a/same-build-result.sh
++++ b/same-build-result.sh
+@@ -236,6 +236,10 @@ if test -n "$OTHERDIR"; then
+     fi
+   done
+ fi
++
++# Ignore rpmlint output differences
++exit_code[1]=''
++
+ if test -n "${exit_code[*]}"; then
+   exit 1
+ fi
