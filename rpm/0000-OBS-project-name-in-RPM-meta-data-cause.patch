@@ -9,7 +9,7 @@ Subject: [PATCH] OBS project name in RPM meta data causes problems in copied
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/functions.sh b/functions.sh
-index e5af36bc77a57f6c8018eab9ba3b1f91c9e03a7d..d3719cbb70b7af63d7976478c3009a9e11dd1ea4 100755
+index e5af36b..d3719cb 100755
 --- a/functions.sh
 +++ b/functions.sh
 @@ -68,7 +68,8 @@ done

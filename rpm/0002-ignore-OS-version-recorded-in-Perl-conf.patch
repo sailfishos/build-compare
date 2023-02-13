@@ -8,7 +8,7 @@ Subject: [PATCH] ignore OS version recorded in Perl config
  1 file changed, 11 insertions(+)
 
 diff --git a/pkg-diff.sh b/pkg-diff.sh
-index fe94ca62802409bd983c535c06d740d5782fdcf8..7e41cc3c4a7b03e89b1aad61c36198612573d85a 100755
+index fe94ca6..7e41cc3 100755
 --- a/pkg-diff.sh
 +++ b/pkg-diff.sh
 @@ -542,6 +542,17 @@ normalize_file()
