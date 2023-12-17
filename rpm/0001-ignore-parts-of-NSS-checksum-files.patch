@@ -12,12 +12,12 @@ of a little bit of metadata. See
  1 file changed, 13 insertions(+)
 
 diff --git a/pkg-diff.sh b/pkg-diff.sh
-index 96dd46d..fe94ca6 100755
+index 13d1e5f..7c213aa 100755
 --- a/pkg-diff.sh
 +++ b/pkg-diff.sh
-@@ -617,6 +617,19 @@ normalize_file()
-       sed -i 's/^127.0.0.1[[:blank:]].*/127.0.0.1 hst/' "old/$file"
-       sed -i 's/^127.0.0.1[[:blank:]].*/127.0.0.1 hst/' "new/$file"
+@@ -667,6 +667,19 @@ normalize_file()
+     */dune-package)
+       sed -i '1s@^(lang dune [^)]\+)@(lang dune 0.0)@' "old/$file" "new/$file"
        ;;
 +    /usr/lib*/libfreebl3.chk|\
 +    /usr/lib*/libfreeblpriv3.chk|\
